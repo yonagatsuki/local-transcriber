@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Transcriber</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="workspace">
+        <div class="player-panel">
+          <div class="topbar">
+            <div>
+              <p class="eyebrow" data-i18n="eyebrow">Local Tool</p>
+              <h1 data-i18n="title">Local Transcriber</h1>
+            </div>
+            <span class="status" id="status">Ready</span>
+          </div>
+
+          <video id="preview" controls></video>
+
+          <div class="controls">
+            <label class="file-picker">
+              <input id="fileInput" type="file" accept="audio/*,video/*" />
+              <span data-i18n="chooseFile">ファイル選択</span>
+            </label>
+
+            <label>
+              <span data-i18n="sourceLanguage">音声言語</span>
+              <select id="sourceLanguage">
+                <option value="auto">Auto</option>
+                <option value="en">English</option>
+                <option value="ja">Japanese</option>
+                <option value="zh">Chinese</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="explanationLanguage">表示・解説言語</span>
+              <select id="explanationLanguage">
+                <option value="ja">Japanese</option>
+                <option value="zh">Chinese</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+
+            <button id="transcribeBtn" type="button" data-i18n="transcribe">文字起こし</button>
+          </div>
+        </div>
+
+        <aside class="explanation-panel">
+          <h2 data-i18n="explanationTitle">AI解説</h2>
+          <div id="explanation" class="empty" data-i18n="explanationEmpty">文をクリックすると解説が表示されます。</div>
+        </aside>
+      </section>
+
+      <section class="transcript-panel">
+        <div class="section-heading">
+          <h2 data-i18n="sentencesTitle">文章リスト</h2>
+          <button id="sampleBtn" type="button" class="secondary" data-i18n="sample">サンプル表示</button>
+        </div>
+        <div id="sentences" class="sentences"></div>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
