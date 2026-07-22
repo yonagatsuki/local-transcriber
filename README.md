@@ -4,7 +4,7 @@ A local web tool that transcribes audio or video files with the OpenAI API. It a
 
 ## Run
 
-Create `.env` from `.env.example` and add your OpenAI API key.
+Create `.env` from `env.example` and add your OpenAI API key.
 
 ```powershell
 .\start-local.ps1
