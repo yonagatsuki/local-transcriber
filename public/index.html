@@ -7,58 +7,81 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <main class="app">
-      <section class="workspace">
-        <div class="player-panel">
-          <div class="topbar">
-            <div>
-              <p class="eyebrow" data-i18n="eyebrow">Local Tool</p>
-              <h1 data-i18n="title">Local Transcriber</h1>
-            </div>
-            <span class="status" id="status">Ready</span>
-          </div>
-
-          <video id="preview" controls></video>
-
-          <div class="controls">
-            <label class="file-picker">
-              <input id="fileInput" type="file" accept="audio/*,video/*" />
-              <span data-i18n="chooseFile">ファイル選択</span>
-            </label>
-
-            <label>
-              <span data-i18n="sourceLanguage">音声言語</span>
-              <select id="sourceLanguage">
-                <option value="auto">Auto</option>
-                <option value="en">English</option>
-                <option value="ja">Japanese</option>
-                <option value="zh">Chinese</option>
-              </select>
-            </label>
-
-            <label>
-              <span data-i18n="explanationLanguage">表示・解説言語</span>
-              <select id="explanationLanguage">
-                <option value="ja">Japanese</option>
-                <option value="zh">Chinese</option>
-                <option value="en">English</option>
-              </select>
-            </label>
-
-            <button id="transcribeBtn" type="button" data-i18n="transcribe">文字起こし</button>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="identity">
+          <span class="identity-mark">LT</span>
+          <div>
+            <p class="eyebrow" data-i18n="eyebrow">Local Tool</p>
+            <h1 data-i18n="title">Local Transcriber</h1>
           </div>
         </div>
 
-        <aside class="explanation-panel">
-          <h2 data-i18n="explanationTitle">AI解説</h2>
-          <div id="explanation" class="empty" data-i18n="explanationEmpty">文をクリックすると解説が表示されます。</div>
+        <div class="topbar-actions">
+          <span class="status" id="status">Ready</span>
+          <button id="sampleBtn" type="button" class="text-button" data-i18n="sample">Sample</button>
+        </div>
+      </header>
+
+      <section class="control-strip" aria-label="Transcription controls">
+        <label class="file-picker">
+          <input id="fileInput" type="file" accept="audio/*,video/*" />
+          <span data-i18n="chooseFile">Choose file</span>
+        </label>
+
+        <label class="field">
+          <span data-i18n="sourceLanguage">Audio language</span>
+          <select id="sourceLanguage">
+            <option value="auto">Auto</option>
+            <option value="en">English</option>
+            <option value="ja">Japanese</option>
+            <option value="zh">Chinese</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="explanationLanguage">Display / explanation</span>
+          <select id="explanationLanguage">
+            <option value="ja">Japanese</option>
+            <option value="zh">Chinese</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+
+        <button id="transcribeBtn" type="button" class="primary-button" data-i18n="transcribe">Transcribe</button>
+      </section>
+
+      <section class="workspace">
+        <section class="source-pane" aria-labelledby="source-title">
+          <div class="section-heading">
+            <p class="section-label" data-i18n="inputKicker">Source</p>
+            <h2 id="source-title" data-i18n="inputTitle">Local file</h2>
+          </div>
+
+          <div class="media-frame">
+            <video id="preview" controls></video>
+            <div class="media-placeholder" id="mediaPlaceholder">
+              <span class="placeholder-mark">A/V</span>
+              <p data-i18n="placeholderTitle">No file selected</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="inspector-pane" aria-labelledby="inspector-title">
+          <div class="section-heading">
+            <p class="section-label" data-i18n="explanationKicker">Inspector</p>
+            <h2 id="inspector-title" data-i18n="explanationTitle">AI Explanation</h2>
+          </div>
+          <div id="explanation" class="empty-state" data-i18n="explanationEmpty">Select a sentence.</div>
         </aside>
       </section>
 
-      <section class="transcript-panel">
-        <div class="section-heading">
-          <h2 data-i18n="sentencesTitle">文章リスト</h2>
-          <button id="sampleBtn" type="button" class="secondary" data-i18n="sample">サンプル表示</button>
+      <section class="transcript-pane" aria-labelledby="transcript-title">
+        <div class="section-heading transcript-heading">
+          <div>
+            <p class="section-label" data-i18n="sentencesKicker">Transcript</p>
+            <h2 id="transcript-title" data-i18n="sentencesTitle">Sentences</h2>
+          </div>
         </div>
         <div id="sentences" class="sentences"></div>
       </section>
